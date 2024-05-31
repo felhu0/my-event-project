@@ -1,10 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import SignInForm from '../../_components/sign-in-form';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { useAuth } from '@/app/(root)/_components/auth-provider';
+import { useAuth } from '../../_components/auth.provider';
+import SignInForm from '../../_components/sign-in-form';
+
+
 
 
 export default function SignInPage() {

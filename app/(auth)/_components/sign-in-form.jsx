@@ -6,7 +6,8 @@ import { MdErrorOutline } from 'react-icons/md';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/app/(root)/_components/auth-provider';
+import { useAuth } from './auth.provider';
+
 
 const formSchema = z.object({
     email: z.string().email({ message: 'You need to enter a valid email' }),

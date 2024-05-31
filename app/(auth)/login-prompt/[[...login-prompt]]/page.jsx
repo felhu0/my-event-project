@@ -1,6 +1,7 @@
 'use client';
 
-import withAuth from "@/app/hoc/withAuth";
+
+import withAuth from "@/app/lib/withAuth";
 import Link from "next/link";
 
 

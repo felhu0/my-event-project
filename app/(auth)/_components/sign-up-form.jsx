@@ -1,12 +1,12 @@
 'use client';
 
-import { useAuth } from '@/app/(root)/_components/auth-provider';
-import { addNewUser } from '@/app/lib/user.db';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { MdErrorOutline } from 'react-icons/md';
 import { z } from 'zod';
+import { useAuth } from './auth.provider';
+import { addNewUser } from '@/app/lib/user.db';
 
 const formSchema = z
     .object({

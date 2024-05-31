@@ -1,8 +1,11 @@
+'use client';
 
-export default function Home() {
+import withAuth from "./lib/withAuth";
+
+const LandingPage = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-     
-    </main>
-  );
+    <div>LandingPage</div>
+  )
 }
+
+export default withAuth(LandingPage);
