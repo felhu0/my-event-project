@@ -10,7 +10,7 @@ import { useAuth } from './auth.provider';
 export const UsersContext = createContext();
 
 const UsersContextProvider = ({ children }) => {
-    const [inc, setInc] = useState(true);
+    const [isAscending, setIsAscending] = useState(true);
     const [eventList, setEventList] = useState([]);
     const [eventListOriginal, setEventListOriginal] = useState([]);
 
@@ -25,22 +25,23 @@ const UsersContextProvider = ({ children }) => {
             setEventListOriginal(eventList);
         }
     }, [eventList]);
-
-    const onSort = () => {
-        const sortedList = [...eventListOriginal].sort((a, b) => {
-            return inc ? a.numberOfSpots - b.numberOfSpots : b.numberOfSpots - a.numberOfSpots;
-        });
-        setEventList(sortedList);
-        setInc(!inc);
-    };
     
     const onSortByDate = () => {
         const sortedList = [...eventListOriginal].sort((a, b) => {
-            return inc ? new Date(a.date) - new Date(b.date) : new Date(b.date) - new Date(a.date);
+            return isAscending ? new Date(a.date) - new Date(b.date) : new Date(b.date) - new Date(a.date);
         });
         setEventList(sortedList);
-        setInc(!inc);
+        setIsAscending(!isAscending)
     };
+
+    const onSortByLocation = () => {
+        const sortedList = [...eventListOriginal].sort((a, b) => {
+            return isAscending ? a.location.localeCompare(b.location) : b.location.localeCompare(a.location);
+        });
+        setEventList(sortedList);
+        setIsAscending(!isAscending);
+    };
+
 
     const currentlyBookedUsers = event?.bookedUsers || [];
     const numberOfBookedUsers = currentlyBookedUsers.length;
@@ -126,9 +127,9 @@ const UsersContextProvider = ({ children }) => {
     };
 
     const value = {
-        onSort,
         onSortByDate,
-        inc,
+        onSortByLocation,
+        isAscending,
         eventList,
         setEventList,
         setEventListOriginal,
