@@ -14,6 +14,7 @@ const LandingPage = () => {
   const { events } = useEvents();
 
   const {
+      onSertByPlaces,
       onSortByDate,
       onSortByLocation,
       eventList,
@@ -33,6 +34,11 @@ const LandingPage = () => {
   return (
       <div className='flex flex-col py-12 md:py-28 px-6 md:px-16 lg:px-36 justify-center items-center'>
           <div className='flex mt-10 md:mt-20 space-x-5'>
+            <button
+                  className='flex gap-3 items-center rounded-md bg-white text-black p-2 hover:bg-gray-200'
+                  onClick={onSertByPlaces}>
+                  <span>Sort by places</span>
+              </button>
               <button
                   className='flex gap-3 items-center rounded-md bg-white text-black p-2 hover:bg-gray-200'
                   onClick={onSortByLocation}>

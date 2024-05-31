@@ -25,6 +25,14 @@ const UsersContextProvider = ({ children }) => {
             setEventListOriginal(eventList);
         }
     }, [eventList]);
+
+    const onSertByPlaces = () => {
+        const sortedList = [...eventListOriginal].sort((a, b) => {
+            return isAscending ? a.numberOfSpots - b.numberOfSpots : b.numberOfSpots - a.numberOfSpots;
+        });
+        setEventList(sortedList);
+        setIsAscending(!isAscending);
+    };
     
     const onSortByDate = () => {
         const sortedList = [...eventListOriginal].sort((a, b) => {
@@ -127,6 +135,7 @@ const UsersContextProvider = ({ children }) => {
     };
 
     const value = {
+        onSertByPlaces,
         onSortByDate,
         onSortByLocation,
         isAscending,
