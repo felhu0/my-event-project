@@ -18,7 +18,7 @@ const SignInForm = () => {
     const { login } = useAuth();
     const router = useRouter();
     
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
             email: '',
@@ -28,7 +28,11 @@ const SignInForm = () => {
 
     const onSubmit = async (values) => {
         try {
+            
+            console.log('Submitting form with values:', values); // Debug log
             await login(values);
+            reset();
+            console.log('Form reset'); // Debug log to confirm reset
             router.push('/');
         } catch (error) {
             console.error('Failed to sign in', error);
@@ -37,7 +41,7 @@ const SignInForm = () => {
 
     return (
         <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
-            <form
+            <form name='sign-in-form'
                 className='space-y-6'
                 onSubmit={handleSubmit(onSubmit)}>
                 <div>
@@ -57,7 +61,7 @@ const SignInForm = () => {
                         {errors.email && (
                             <span className='text-error text-xs mt-[2px] flex gap-1 items-center'>
                                 <MdErrorOutline />
-                                <span className='text-xs'>
+                                <span className='text-xs text-red-500'>
                                     {errors.email.message}
                                 </span>
                             </span>
@@ -84,7 +88,7 @@ const SignInForm = () => {
                         {errors.password && (
                             <span className='text-error text-xs mt-[2px] flex gap-1 items-center'>
                                 <MdErrorOutline />
-                                <span className='text-xs'>
+                                <span className='text-xs text-red-500'>
                                     {errors.password.message}
                                 </span>
                             </span>

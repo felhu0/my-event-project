@@ -122,7 +122,7 @@ const InputField = ({ id, label, type, register, registerName, error }) => (
             {error && (
                 <span className='text-error text-xs mt-[2px] flex gap-1 items-center'>
                     <MdErrorOutline />
-                    <span className='text-xs'>{error.message}</span>
+                    <span className='text-xs text-red-500'>{error.message}</span>
                 </span>
             )}
         </div>
