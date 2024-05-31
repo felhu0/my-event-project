@@ -33,7 +33,7 @@ export default function SignInPage() {
                 Don{"'"}t have an account?{' '}
                 <Link
                     className='font-semibold leading-6 text-tertiary hover:opacity-75'
-                    href='/sign-in'>
+                    href='/sign-up'>
                     {' '}
                     Register
                 </Link>

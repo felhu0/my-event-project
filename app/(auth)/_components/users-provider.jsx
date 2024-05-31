@@ -54,10 +54,10 @@ const UsersContextProvider = ({ children }) => {
     const currentlyBookedUsers = event?.bookedUsers || [];
     const numberOfBookedUsers = currentlyBookedUsers.length;
     const isMaxUsers = numberOfBookedUsers === event?.numberOfSpots;
-    const hasBooked = currentlyBookedUsers.some((u) => u.id === user?.uid);
+    const Booked = currentlyBookedUsers.some((u) => u.id === user?.uid);
 
-    const bookEventFunction = async () => {
-        if (isMaxUsers || hasBooked) return;
+    const bookEvent = async () => {
+        if (isMaxUsers || Booked) return;
 
         if (!user || !user.uid) {
             toast.error('You need to be logged in to book an event.');
@@ -102,7 +102,7 @@ const UsersContextProvider = ({ children }) => {
     
     };
 
-    const undoBookedEventFunction = async () => {
+    const undoBookedEvent = async () => {
 
         if (!currentlyBookedUsers) return;
         console.log('Undo booking for event with ID:', id);
@@ -142,11 +142,11 @@ const UsersContextProvider = ({ children }) => {
         eventList,
         setEventList,
         setEventListOriginal,
-        bookEventFunction,
+        bookEvent,
         isMaxUsers,
         numberOfBookedUsers,
-        hasBooked,
-        undoBookedEventFunction,
+        Booked,
+        undoBookedEvent,
     };
 
     return (

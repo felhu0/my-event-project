@@ -11,11 +11,11 @@ const EventDetail = () => {
     const { id } = useParams();
     const { event, setEvent } = useEvents();
     const {
-        bookEventFunction,
+        bookEvent,
         isMaxUsers,
         numberOfBookedUsers,
-        hasBooked,
-        undoBookedEventFunction,
+        Booked,
+        undoBookedEvent,
     } = useUsers();
 
     useEffect(() => {
@@ -108,14 +108,14 @@ const EventDetail = () => {
                             <div className='p-6 sm:flex sm:px-6'>
                                 <button
                                     onClick={
-                                        hasBooked
-                                            ? undoBookedEventFunction
-                                            : bookEventFunction
+                                        Booked
+                                            ? undoBookedEvent
+                                            : bookEvent
                                     }
                                     className={`text-s text-black py-3 px-6 rounded-md font-semibold transition ${
                                         isMaxUsers ? 'bg-gray-400 cursor-not-allowed' : 'bg-white hover:bg-black-600'
                                     }`}>
-                                    {hasBooked ? 'Undo booking' : 'Book now!'}
+                                    {Booked ? 'Undo booking' : 'Book now!'}
                                 </button>
                             </div>
                         </dl>
